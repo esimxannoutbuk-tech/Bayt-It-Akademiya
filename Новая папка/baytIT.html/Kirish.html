@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Bayt IT - Kirish</title>
+    <style>
+        body { font-family: sans-serif; background: #f4f4f7; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+        .logo { font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #1f3fcd; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background: #ff5722; border: none; color: white; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 10px; }
+        #error-msg { color: red; font-size: 14px; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <div class="logo">Bayt IT</div>
+    <input type="text" id="phone" placeholder="Telefon raqam (+998...)">
+    <input type="password" id="password" placeholder="Parol">
+    <button onclick="login()">KIRISH</button>
+    <p id="error-msg">Telefon raqam yoki parol noto'g'ri!</p>
+</div>
+
+<script>
+    // Siz belgilagan "to'g'ri" ma'lumotlar
+    const VALID_PHONE = "932009747";
+    const VALID_PASSWORD = "1234";
+
+    
+
+    function login() {
+        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+        const errorMsg = document.getElementById("error-msg");
+
+        if (phone === VALID_PHONE && password === VALID_PASSWORD) {
+            // Muvaffaqiyatli kirish - boshqa sahifaga o'tish
+            window.location.href = "dashboard.html"; 
+        } else {
+            // Xatolik ko'rsatish
+            errorMsg.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>

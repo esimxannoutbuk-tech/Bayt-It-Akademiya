@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Sovg'a Buyurtma Qilish</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; background-color: #f4f4f9; height: 150vh; }
+        form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px; }
+        input { width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        #message { margin-top: 15px; font-weight: bold; }
+        
+        /* Tepaga chiqish tugmasi uchun uslublar */
+        #topBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar bg-body-tertiary" style="width: 100%; height: 40px; display: flex; align-items: center; background-color: #777; ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="CoinShop.html" style="width: 50px; border:2px solid white; color: white; padding: 10px; border-radius: 18px; text-decoration: none;">
+      
+      Chiqish
+    </a>
+  </div>
+</nav><br><br><br>
+
+<form id="orderForm">
+    <h2>Sovg'a Buyurtmasi</h2>
+    <input type="text" id="fullname" placeholder="Ism va Familya">
+    <input type="text" id="giftname" placeholder="Sovg'a nomi">
+    <input type="number" id="coins" placeholder="Coin soni">
+    <button type="button" onclick="validateForm()">Yuborish</button>
+    <div id="message"></div>
+</form>
+
+<script>
+    // Tepaga chiqish logikasi
+    window.onscroll = function() {
+        let btn = document.getElementById("topBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+
+    function topFunction() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    // Forma validatsiyasi
+    function validateForm() {
+        const fullname = document.getElementById('fullname').value;
+        const giftname = document.getElementById('giftname').value;
+        const coins = document.getElementById('coins').value;
+        const messageDiv = document.getElementById('message');
+
+        if (fullname === "" || giftname === "" || coins === "") {
+            messageDiv.style.color = "red";
+            messageDiv.innerText = "Nimanidir to'ldirmagansiz!";
+        } else {
+            messageDiv.style.color = "green";
+            messageDiv.innerText = "Sizga ustozingiz aloqaga chiqadi.";
+        }
+    }
+</script>
+
+</body>
+</html>
